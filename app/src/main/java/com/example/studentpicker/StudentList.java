@@ -13,7 +13,6 @@ public class StudentList {
 
     public Collection<Student> getStudents(){
         return studentList;
-        
     }
 
     public void addStudent(Student testStudent) {
@@ -24,9 +23,21 @@ public class StudentList {
         studentList.remove(testStudent);
     }
 
-    public Student chooseStudent() {
+    public Student chooseStudent() throws EmptyStudentListException {
+        int size = studentList.size();
+        if (size<=0){
+            throw new EmptyStudentListException();
+        }
         int index= (int) (studentList.size() * Math.random());
 
         return studentList.get(index);
+    }
+
+    public  int size() {
+        return studentList.size();
+    }
+
+    public boolean contains(Student testStudent) {
+        return studentList.contains(testStudent);
     }
 }

@@ -20,9 +20,17 @@ public class StudentListTest extends TestCase {
         String studentName = "A Student";
         Student testStudent = new Student(studentName);
         studentList.addStudent(testStudent);
-        Collection<Student> students = studentList.getStudents();
-        assertTrue("Student List Size", students.size() == 1);
-        assertTrue("", students.contains(testStudent));
+        assertTrue("Student List Size", studentList.size() == 1);
+        assertTrue("", studentList.contains(testStudent));
+    }
+
+    public void testGetStudents() {
+        StudentList studentList = new StudentList();
+        String studentName = "A Student";
+        Student testStudent = new Student(studentName);
+        studentList.addStudent(testStudent);
+        assertTrue("Student List Size", studentList.size() == 1);
+        assertTrue("", studentList.contains(testStudent));
     }
 
     public void testRemoveStudentList() {
@@ -30,16 +38,14 @@ public class StudentListTest extends TestCase {
         String studentName = "A Student";
         Student testStudent = new Student(studentName);
         studentList.addStudent(testStudent);
-        Collection<Student> students = studentList.getStudents();
-        assertTrue("Student List Size not empty", students.size() == 1);
-        assertTrue("", students.contains(testStudent));
+        assertTrue("Student List Size not empty", studentList.size() == 1);
+        assertTrue("", studentList.contains(testStudent));
         studentList.removeStudent(testStudent);
-        students = studentList.getStudents();
-        assertTrue("Student List Size", students.size() == 0);
+        assertTrue("Student List Size", studentList.size() == 0);
         assertFalse("Test Student Still Contained", false);
     }
 
-    public void testChooseStudent() {
+    public void testChooseStudent() throws EmptyStudentListException {
         StudentList studentList = new StudentList();
         String studentName = "A Student";
         Student testStudent = new Student(studentName);
@@ -58,9 +64,20 @@ public class StudentListTest extends TestCase {
             int maxcount=1000;
             while (maxcount>0 && !targetStudent.equals(studentList.chooseStudent())) {
                 maxcount--;
-
             }
             assertTrue("Too many iterations",maxcount>0);
         }
+    }
+
+    public void testChooseEmptyStudentList(){
+        StudentList studentList = new StudentList();
+        try {
+            Student s = studentList.chooseStudent();
+            assertTrue("We couldn not reach here", s==null);
+            assertTrue("We couldn not reach here", false);
+        } catch (EmptyStudentListException a){
+            assertTrue("We couldn not reach here", true);
+        }
+
     }
 }
