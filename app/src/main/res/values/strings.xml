@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">StudentPicker</string>
+    <string name="choose_a_student">Choose a student</string>
+    <string name="choose_student">Choose A Student</string>
+    <string name="add">Add</string>
+    <string name="add">Add</string>
+</resources>
