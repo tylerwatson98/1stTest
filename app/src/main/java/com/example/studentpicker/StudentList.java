@@ -1,9 +1,10 @@
 package com.example.studentpicker;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class StudentList {
+public class StudentList implements Serializable{
 
     protected final ArrayList<Student> studentList;
     protected final ArrayList<Listener> listeners;

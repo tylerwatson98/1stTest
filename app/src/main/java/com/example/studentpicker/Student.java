@@ -1,8 +1,10 @@
 package com.example.studentpicker;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
     //protected because want things to have access to it but not change it outside the student class
-    protected final String studentName;
+    protected String studentName;
 
     public Student(String studentName){
         this.studentName=studentName;
@@ -13,5 +15,16 @@ public class Student {
     }
     public String toString(){
         return getName();
+    }
+
+    public boolean equals(Student compareStudent){
+        if(compareStudent==null){
+            return false;
+        }
+        return getName().equals(compareStudent.getName());
+    }
+
+    public int hashcode(){
+        return ("Student: "+getName()).hashCode();
     }
 }
