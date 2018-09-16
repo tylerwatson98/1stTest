@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
-
     }
 
     public void editStudents(MenuItem menu){
@@ -38,5 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void bulkImport (MenuItem menu){
         Toast.makeText(this,"Bulk Import", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(MainActivity.this, BulkImportActivity.class);
+        startActivity(intent);
     }
 }
