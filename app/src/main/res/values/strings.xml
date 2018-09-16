@@ -5,4 +5,7 @@
     <string name="add">Add</string>
     <string name="add2">Add</string>
     <string name="student_name">student name</string>
+    <string name="action_settings">action_settings</string>
+    <string name="edit_students">Edit Students</string>
+    <string name="bulk_import">Bulk Import</string>
 </resources>
