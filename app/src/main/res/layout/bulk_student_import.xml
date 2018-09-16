@@ -3,6 +3,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <EditText
+        android:id="@+id/bulkStudentText"
         android:layout_width="300dp"
         android:layout_height="519dp"
         android:layout_alignParentTop="true"
@@ -12,9 +13,11 @@
         android:inputType="textMultiLine" />
 
     <Button
+        android:id="@+id/addStudentAction"
         android:layout_width="236dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:onClick="addStudentAction"
         android:text="@string/add" />
 </RelativeLayout>

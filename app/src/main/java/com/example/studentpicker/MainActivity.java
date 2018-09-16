@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         StudentListController st = new StudentListController();
         try {
             Student s = st.chooseStudent();
-            TextView view = findViewById(R.id.chosenStudentTextView);
+            TextView view = (TextView) findViewById(R.id.chosenStudentTextView);
             view.setText(s.getName());
         } catch (EmptyStudentListException e) {
             Toast.makeText(this,"There are no students!", Toast.LENGTH_SHORT).show();
