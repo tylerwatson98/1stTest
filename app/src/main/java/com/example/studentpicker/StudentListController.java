@@ -1,12 +1,28 @@
 package com.example.studentpicker;
 
+import java.io.IOException;
+
 public class StudentListController {
     private static StudentList studentList = null;
     static public StudentList getStudentList(){
         if (studentList == null) {
-            studentList = new StudentList();
+            try {
+                studentList= StudentListManager.getManager().loadStudentList();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return studentList;
+    }
+
+    static public void saveStudentList(){
+        try {
+            StudentListManager.getManager().saveStudentList(getStudentList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Student chooseStudent() throws EmptyStudentListException{
@@ -19,6 +35,7 @@ public class StudentListController {
 
     public void bulkImport(String text) {
         String [] lines= text.split("\n");
+        StudentList sl = getStudentList();
         for (String line1 : lines) {
             String line = line1.trim();
             if (!line.equals("")) {

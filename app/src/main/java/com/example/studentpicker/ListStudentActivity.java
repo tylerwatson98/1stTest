@@ -21,6 +21,7 @@ public class ListStudentActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_students);
+        StudentListManager.initManger(this.getApplicationContext());
         ListView listView = findViewById(R.id.studentListView);
         Collection<Student> students=  StudentListController.getStudentList().getStudents();
         final ArrayList<Student> list = new ArrayList<>(students);

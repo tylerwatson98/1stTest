@@ -1,5 +1,6 @@
 package com.example.studentpicker;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Base64;
@@ -15,8 +16,30 @@ public class StudentListManager{
     static final String slkey = "studentList";
     Context context;
 
-    public StudentListManager(){
-        this.context=context;
+
+    @SuppressLint("StaticFieldLeak")
+    static private StudentListManager studentListManager=null;
+
+
+    public static void initManger(Context context){
+        if(studentListManager==null){
+            if(context==null){
+                throw new RuntimeException("Missing context for StudentListManager");
+            }
+            studentListManager=new StudentListManager(context);
+        }
+    }
+
+    public static StudentListManager getManager(){
+        if(studentListManager==null){
+            throw new RuntimeException("Did not initialize manager");
+            }
+        return studentListManager;
+    }
+
+
+    public StudentListManager(Context context){
+        this.context= context;
     }
 
     public StudentList loadStudentList() throws ClassNotFoundException, IOException{
@@ -49,7 +72,7 @@ public class StudentListManager{
         SharedPreferences settings= context.getSharedPreferences(prefFile, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= settings.edit();
         editor.putString(slkey,studentListToString(sl));
-        editor.commit();
+        editor.apply();
     }
 
 

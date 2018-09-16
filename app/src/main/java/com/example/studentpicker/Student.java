@@ -17,11 +17,12 @@ public class Student implements Serializable {
         return getName();
     }
 
-    public boolean equals(Student compareStudent){
-        if(compareStudent==null){
-            return false;
-        }
-        return getName().equals(compareStudent.getName());
+    public boolean equals(Object compareStudent) {
+        return compareStudent != null && compareStudent.getClass() == this.getClass() && this.equals((Student) compareStudent);
+    }
+
+    public boolean equals(Student compareStudent) {
+        return compareStudent != null && getName().equals(compareStudent.getName());
     }
 
     public int hashcode(){
