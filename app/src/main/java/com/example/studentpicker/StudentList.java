@@ -30,6 +30,7 @@ public class StudentList {
 
     public void removeStudent(Student testStudent) {
         studentList.remove(testStudent);
+        notifyListeners();
     }
 
     public Student chooseStudent() throws EmptyStudentListException {

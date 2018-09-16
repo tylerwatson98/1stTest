@@ -92,8 +92,12 @@ public class StudentListTest extends TestCase {
             }
         };
         studentList.addListener(l);
+        Student testStudent = new Student("newbie");
         studentList.addStudent(new Student("Newbie"));
         assertTrue("Student list didnt send update",this.updated);
+        updated=false;
+        studentList.removeStudent(testStudent);
+        assertTrue("Removed student",this.updated);
     }
 
     public void testRemoveListeners() {

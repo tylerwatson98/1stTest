@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -31,6 +32,16 @@ public class ListStudentActivity extends Activity {
                 Collection<Student> students=  StudentListController.getStudentList().getStudents();
                 list.addAll(students);
                 studentAdapter.notifyDataSetChanged();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(ListStudentActivity.this,"delete "+list.get(position).toString(),Toast.LENGTH_SHORT).show();
+                Student student =list.get(position);
+                StudentListController.getStudentList().removeStudent(student);
+                return false;
             }
         });
 
