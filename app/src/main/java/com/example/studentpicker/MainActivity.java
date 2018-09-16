@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,5 +41,18 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Bulk Import", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, BulkImportActivity.class);
         startActivity(intent);
+    }
+
+    public void chooseAStudent(View v) {
+        Toast.makeText(this,"choose a student", Toast.LENGTH_SHORT).show();
+        StudentListController st = new StudentListController();
+        try {
+            Student s = st.chooseStudent();
+            TextView view = findViewById(R.id.chosenStudentTextView);
+            view.setText(s.getName());
+        } catch (EmptyStudentListException e) {
+            Toast.makeText(this,"There are no students!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

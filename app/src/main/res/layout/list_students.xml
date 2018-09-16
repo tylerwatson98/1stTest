@@ -17,7 +17,6 @@
         tools:ignore="RelativeOverlap" />
 
     <EditText
-        android:id="@+id/addStudentNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -31,7 +30,6 @@
         android:layout_marginLeft="19dp" />
 
     <ListView
-        android:id="@+id/StudentListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"

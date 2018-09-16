@@ -3,19 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/editStudentsItem"
         android:title="@string/edit_students"
         android:onClick="editStudents"
         />
 
     <item
-        android:id="@+id/bulkImportItem"
         android:onClick="bulkImport"
         android:title="@string/bulk_import"
         />

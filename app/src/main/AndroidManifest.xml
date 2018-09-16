@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListStudentActivity" />
-        <activity android:name=".BulkImportActivity"></activity>
+        <activity android:name=".BulkImportActivity" />
     </application>
 
 </manifest>
