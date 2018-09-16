@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
     //protected because want things to have access to it but not change it outside the student class
-    protected String studentName;
+    private final String studentName;
 
     public Student(String studentName){
         this.studentName=studentName;

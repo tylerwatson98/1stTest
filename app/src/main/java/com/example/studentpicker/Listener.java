@@ -1,5 +1,5 @@
 package com.example.studentpicker;
 
-public interface Listener {
+interface Listener {
     void update();
 }

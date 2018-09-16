@@ -1,4 +1,4 @@
 package com.example.studentpicker;
 
-public class EmptyStudentListException extends Exception {
+class EmptyStudentListException extends Exception {
 }

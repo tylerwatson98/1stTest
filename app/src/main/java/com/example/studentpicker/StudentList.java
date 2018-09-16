@@ -6,13 +6,19 @@ import java.util.Collection;
 
 public class StudentList implements Serializable{
 
-    protected final ArrayList<Student> studentList;
-    protected final ArrayList<Listener> listeners;
+    private ArrayList<Student> studentList;
+    private transient ArrayList<Listener> listeners;
 
     public StudentList(){
         studentList = new ArrayList<>();
         listeners = new ArrayList<>();
     }
+private ArrayList<Listener>getListeners(){
+        if(listeners==null){
+            listeners=new ArrayList<Listener>();
+        }
+        return listeners;
+}
 
     public Collection<Student> getStudents(){
         return studentList;
@@ -24,10 +30,12 @@ public class StudentList implements Serializable{
     }
 
     private void notifyListeners() {
-        for (Listener listener:listeners) {
+        for (Listener listener:getListeners()) {
             listener.update();
         }
     }
+
+
 
     public void removeStudent(Student testStudent) {
         studentList.remove(testStudent);
@@ -54,10 +62,10 @@ public class StudentList implements Serializable{
 
 
     public void addListener(Listener l) {
-        listeners.add(l);
+        getListeners().add(l);
     }
 
     public void removeListener(Listener l) {
-        listeners.remove(l);
+        getListeners().remove(l);
     }
 }

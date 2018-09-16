@@ -81,7 +81,7 @@ public class StudentListTest extends TestCase {
 
     }
 
-    boolean updated=false;
+    private boolean updated=false;
     public void testNotifyListeners() {
         StudentList studentList = new StudentList();
         updated = false;

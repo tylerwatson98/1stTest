@@ -2,12 +2,18 @@ package com.example.studentpicker;
 
 import java.io.IOException;
 
-public class StudentListController {
+class StudentListController {
     private static StudentList studentList = null;
     static public StudentList getStudentList(){
         if (studentList == null) {
             try {
                 studentList= StudentListManager.getManager().loadStudentList();
+                studentList.addListener(new Listener() {
+                    @Override
+                    public void update() {
+                        saveStudentList();
+                    }
+                });
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -17,7 +23,7 @@ public class StudentListController {
         return studentList;
     }
 
-    static public void saveStudentList(){
+    private static void saveStudentList(){
         try {
             StudentListManager.getManager().saveStudentList(getStudentList());
         } catch (IOException e) {

@@ -12,9 +12,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class StudentListManager{
-    static final String prefFile= "StudentList";
-    static final String slkey = "studentList";
-    Context context;
+    private static final String prefFile= "StudentList";
+    private static final String slkey = "studentList";
+    private final Context context;
 
 
     @SuppressLint("StaticFieldLeak")
@@ -38,7 +38,7 @@ public class StudentListManager{
     }
 
 
-    public StudentListManager(Context context){
+    private StudentListManager(Context context){
         this.context= context;
     }
 
@@ -53,13 +53,13 @@ public class StudentListManager{
         }
     }
 
-    static public StudentList studentListFromString(String studentListData) throws ClassNotFoundException, IOException{
+    private static StudentList studentListFromString(String studentListData) throws ClassNotFoundException, IOException{
         ByteArrayInputStream bi = new ByteArrayInputStream(Base64.decode(studentListData,Base64.DEFAULT));
         ObjectInputStream oi =new ObjectInputStream(bi);
         return (StudentList)oi.readObject();
     }
 
-    static public String studentListToString(StudentList sl) throws IOException{
+    private static String studentListToString(StudentList sl) throws IOException{
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         ObjectOutputStream oo =new ObjectOutputStream(bo);
         oo.writeObject(sl);
