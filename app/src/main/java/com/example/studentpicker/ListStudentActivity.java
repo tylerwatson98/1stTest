@@ -1,6 +1,8 @@
 package com.example.studentpicker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -38,9 +40,26 @@ public class ListStudentActivity extends Activity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(ListStudentActivity.this,"delete "+list.get(position).toString(),Toast.LENGTH_SHORT).show();
-                Student student =list.get(position);
-                StudentListController.getStudentList().removeStudent(student);
+                //Toast.makeText(ListStudentActivity.this,"delete "+list.get(position).toString(),Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder adb = new AlertDialog.Builder(ListStudentActivity.this);
+                adb.setMessage("Delete "+list.get(position).toString()+"?" );
+                adb.setCancelable(true);
+                final int finalPosition= position;
+                adb.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Student student = list.get(finalPosition);
+                        StudentListController.getStudentList().removeStudent(student);
+                    }
+                });
+                //Student student =list.get(position);
+                //StudentListController.getStudentList().removeStudent(student);
+                adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                adb.show();
                 return false;
             }
         });
