@@ -19,9 +19,9 @@ public class StudentListController {
 
     public void bulkImport(String text) {
         String [] lines= text.split("\n");
-        for (int i =0 ; i <lines.length;i++){
-            String line = lines[i].trim();
-            if(!line.equals("")){
+        for (String line1 : lines) {
+            String line = line1.trim();
+            if (!line.equals("")) {
                 Student s = new Student(line);
                 studentList.addStudent(s);
 

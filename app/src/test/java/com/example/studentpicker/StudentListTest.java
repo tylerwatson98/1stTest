@@ -73,11 +73,42 @@ public class StudentListTest extends TestCase {
         StudentList studentList = new StudentList();
         try {
             Student s = studentList.chooseStudent();
-            assertTrue("We couldn not reach here", s==null);
+            assertFalse("We couldn not reach here", s==null);
             assertTrue("We couldn not reach here", false);
         } catch (EmptyStudentListException a){
             assertTrue("We couldn not reach here", true);
         }
 
     }
+
+    boolean updated=false;
+    public void testNotifyListeners() {
+        StudentList studentList = new StudentList();
+        updated = false;
+        Listener l = new Listener() {
+            @Override
+            public void update() {
+                StudentListTest.this.updated=true;
+            }
+        };
+        studentList.addListener(l);
+        studentList.addStudent(new Student("Newbie"));
+        assertTrue("Student list didnt send update",this.updated);
+    }
+
+    public void testRemoveListeners() {
+        StudentList studentList = new StudentList();
+        updated = false;
+        Listener l = new Listener() {
+            @Override
+            public void update() {
+                StudentListTest.this.updated=true;
+            }
+        };
+        studentList.addListener(l);
+        studentList.removeListener(l);
+        studentList.addStudent(new Student("Newbie"));
+        assertFalse("Student list didnt send update",this.updated);
+    }
+
 }

@@ -8,5 +8,6 @@ public class StudentTest extends TestCase{
         String studentName= "A Student";
         Student student = new Student(studentName);
         assertTrue("Student Name is equal", studentName.equals(student.getName()));
+        assertTrue("Student string is not equal", studentName.equals(student.getName()));
     }
 }
