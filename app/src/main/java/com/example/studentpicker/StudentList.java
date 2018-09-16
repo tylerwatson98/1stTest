@@ -8,7 +8,7 @@ public class StudentList {
     protected ArrayList<Student> studentList;
 
     public StudentList(){
-        studentList = new ArrayList<Student>();
+        studentList = new ArrayList<>();
     }
 
     public Collection<Student> getStudents(){

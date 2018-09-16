@@ -8,4 +8,5 @@
     <string name="action_settings">action_settings</string>
     <string name="edit_students">Edit Students</string>
     <string name="bulk_import">Bulk Import</string>
+    <string name="bulk_student_name">Student name</string>
 </resources>

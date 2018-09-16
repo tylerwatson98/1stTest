@@ -59,13 +59,13 @@ public class StudentListTest extends TestCase {
         Student testStudentB = new Student(studentNameB);
         studentList.addStudent(testStudentB);
         Student[] studentArray = {testStudent, testStudentB};
-        for (int i = 0; i < studentArray.length; i++) {
+        for (Student aStudentArray : studentArray) {
             Student targetStudent = studentArray[1];
-            int maxcount=1000;
-            while (maxcount>0 && !targetStudent.equals(studentList.chooseStudent())) {
+            int maxcount = 1000;
+            while (maxcount > 0 && !targetStudent.equals(studentList.chooseStudent())) {
                 maxcount--;
             }
-            assertTrue("Too many iterations",maxcount>0);
+            assertTrue("Too many iterations", maxcount > 0);
         }
     }
 
